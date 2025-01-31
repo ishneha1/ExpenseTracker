@@ -101,13 +101,13 @@ public class over_view2 extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(100, 173, 166));
 
-        jButton2.setBackground(new java.awt.Color(245, 181, 198));
         jButton2.setText("Dashboard");
 
         jButton3.setText("Add Expense");
 
         jButton4.setText("View Expense");
 
+        jButton5.setBackground(new java.awt.Color(245, 181, 198));
         jButton5.setText("Overview");
 
         jButton6.setText("Delete");
