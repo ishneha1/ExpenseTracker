@@ -31,7 +31,7 @@ public class AddExpenses extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        month_add_expense = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -138,9 +138,9 @@ public class AddExpenses extends javax.swing.JFrame {
             .addGap(0, 35, Short.MAX_VALUE)
         );
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        month_add_expense.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                month_add_expenseActionPerformed(evt);
             }
         });
 
@@ -154,7 +154,7 @@ public class AddExpenses extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                    .addComponent(month_add_expense, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -166,7 +166,7 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(month_add_expense, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -406,7 +406,7 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addComponent(jLabel5))
         );
 
-        jPanel29.setBackground(new java.awt.Color(153, 255, 0));
+        jPanel29.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel10.setText("House Rent");
@@ -427,7 +427,7 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addComponent(jLabel10))
         );
 
-        jPanel32.setBackground(new java.awt.Color(153, 255, 0));
+        jPanel32.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setText("Dairy Products");
@@ -448,7 +448,7 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addComponent(jLabel11))
         );
 
-        jPanel31.setBackground(new java.awt.Color(153, 255, 0));
+        jPanel31.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel13.setText("Meats & Protein");
@@ -469,7 +469,7 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addComponent(jLabel13))
         );
 
-        jPanel30.setBackground(new java.awt.Color(153, 255, 0));
+        jPanel30.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel9.setText("Maintenance & Repair");
@@ -512,7 +512,7 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addComponent(jLabel6))
         );
 
-        jPanel33.setBackground(new java.awt.Color(153, 255, 0));
+        jPanel33.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel14.setText("Snacks & Beverages");
@@ -555,7 +555,7 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addComponent(jLabel7))
         );
 
-        jPanel34.setBackground(new java.awt.Color(153, 255, 0));
+        jPanel34.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel15.setText("Household Supplies");
@@ -578,7 +578,7 @@ public class AddExpenses extends javax.swing.JFrame {
 
         jPanel37.setBackground(new java.awt.Color(153, 255, 0));
 
-        jPanel35.setBackground(new java.awt.Color(153, 255, 0));
+        jPanel35.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel16.setText("Electricity Bills");
@@ -621,7 +621,7 @@ public class AddExpenses extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jPanel36.setBackground(new java.awt.Color(153, 255, 0));
+        jPanel36.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel17.setText("Water Bills");
@@ -765,9 +765,9 @@ public class AddExpenses extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_LogoutButtonClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void month_add_expenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_month_add_expenseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_month_add_expenseActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -892,7 +892,6 @@ public class AddExpenses extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -905,5 +904,6 @@ public class AddExpenses extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField month_add_expense;
     // End of variables declaration//GEN-END:variables
 }

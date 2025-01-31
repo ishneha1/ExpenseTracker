@@ -232,7 +232,7 @@
                           <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jTextField1" alignment="0" pref="84" max="32767" attributes="0"/>
+                      <Component id="month_delete_expense" alignment="0" pref="84" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -244,7 +244,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="month_delete_expense" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -259,9 +259,9 @@
             <Property name="text" type="java.lang.String" value="Month"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="month_delete_expense">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="month_delete_expenseActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
