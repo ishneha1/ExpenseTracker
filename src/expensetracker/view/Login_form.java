@@ -321,6 +321,7 @@ public class Login_form extends javax.swing.JFrame {
 
     private void Loginbuttonclicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Loginbuttonclicked
         // TODO add your handling code here:
+    
         new Dashboard().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_Loginbuttonclicked
