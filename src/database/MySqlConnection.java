@@ -10,8 +10,8 @@ public class MySqlConnection implements Database {
     public Connection openConnection() { 
         try{
             String username = "root";
-            String password = "bahing12";
-            String database = "expense_tracker";
+            String password = "Bahing12";
+            String database = "expense";
             Connection connection;
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/" + database, username, password

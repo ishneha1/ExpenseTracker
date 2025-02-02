@@ -4,6 +4,13 @@
  */
 package expensetracker.view;
 
+import database.MySqlConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author acer
@@ -15,6 +22,35 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+    }
+    int userId;
+    
+    public Dashboard(int userId) {
+        initComponents();
+        this.userId = userId;
+        
+        
+        MySqlConnection mysql = new MySqlConnection();
+    
+        Connection conn = mysql.openConnection();
+        String sql = "select sum(amount) as total from expense where user_id = ?;";
+        int totalIncomeNum = 0;
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, userId);
+            ResultSet result = pstmt.executeQuery(); // read query
+            if(result.next()){
+                totalIncomeNum  =result.getInt("total");
+                totalIncome.setText("Rs. "+totalIncomeNum );
+//                int userId = 
+                
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            mysql.closeConnection(conn);
+        }
+//        select sum(amount) from expense where user_id = 1;
+//        totalIncome 
     }
 
     /**
@@ -47,7 +83,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        totalIncome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 468));
@@ -291,9 +327,9 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        totalIncome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                totalIncomeActionPerformed(evt);
             }
         });
 
@@ -319,7 +355,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(totalIncome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,7 +392,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(totalIncome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -368,9 +404,9 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void totalIncomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalIncomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_totalIncomeActionPerformed
 
     private void logoutclicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutclicked
         // TODO add your handling code here:
@@ -384,7 +420,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void AddExpenseCLicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddExpenseCLicked
         // TODO add your handling code here:
-        new AddExpenses().setVisible(true);
+        new AddExpenses(userId).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_AddExpenseCLicked
 
@@ -464,6 +500,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField totalIncome;
     // End of variables declaration//GEN-END:variables
 }

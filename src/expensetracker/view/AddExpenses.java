@@ -4,6 +4,12 @@
  */
 package expensetracker.view;
 
+import database.MySqlConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Asus
@@ -15,6 +21,10 @@ public class AddExpenses extends javax.swing.JFrame {
      */
     public AddExpenses() {
         initComponents();
+    }
+    public AddExpenses(int user_id) {
+        initComponents();
+        this.user_id = user_id;
     }
 
     /**
@@ -31,21 +41,22 @@ public class AddExpenses extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         month_add_expense = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
+        others = new javax.swing.JTextField();
+        maintain = new javax.swing.JTextField();
+        snacks = new javax.swing.JTextField();
+        electricity = new javax.swing.JTextField();
+        meat = new javax.swing.JTextField();
+        water = new javax.swing.JTextField();
+        dairy = new javax.swing.JTextField();
+        household = new javax.swing.JTextField();
+        houseRent = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -138,15 +149,28 @@ public class AddExpenses extends javax.swing.JFrame {
         jPanel2.setMaximumSize(new java.awt.Dimension(575, 35));
         jPanel2.setMinimumSize(new java.awt.Dimension(575, 35));
 
+        jButton2.setText("Save");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 35, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
 
         month_add_expense.addActionListener(new java.awt.event.ActionListener() {
@@ -208,66 +232,66 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        others.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        others.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                othersActionPerformed(evt);
             }
         });
 
-        jTextField3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        maintain.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        maintain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                maintainActionPerformed(evt);
             }
         });
 
-        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        snacks.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        snacks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                snacksActionPerformed(evt);
             }
         });
 
-        jTextField5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        electricity.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        electricity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                electricityActionPerformed(evt);
             }
         });
 
-        jTextField6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        meat.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        meat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                meatActionPerformed(evt);
             }
         });
 
-        jTextField7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        water.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        water.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                waterActionPerformed(evt);
             }
         });
 
-        jTextField8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        dairy.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        dairy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                dairyActionPerformed(evt);
             }
         });
 
-        jTextField9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        household.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        household.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                householdActionPerformed(evt);
             }
         });
 
-        jTextField13.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        houseRent.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        houseRent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                houseRentActionPerformed(evt);
             }
         });
 
@@ -279,16 +303,16 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField7)
-                    .addComponent(jTextField9)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField13))
+                    .addComponent(others, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(electricity, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(maintain)
+                    .addComponent(water)
+                    .addComponent(household)
+                    .addComponent(snacks)
+                    .addComponent(houseRent))
                 .addContainerGap())
-            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jTextField6)
+            .addComponent(dairy, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(meat)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,23 +320,23 @@ public class AddExpenses extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(houseRent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(maintain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dairy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(meat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(snacks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(household, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(electricity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(water, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(others, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
 
@@ -395,7 +419,7 @@ public class AddExpenses extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
@@ -627,11 +651,10 @@ public class AddExpenses extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -721,41 +744,86 @@ public class AddExpenses extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_month_add_expenseActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void othersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_othersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_othersActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void maintainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maintainActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_maintainActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void snacksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snacksActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_snacksActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void electricityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_electricityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_electricityActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void meatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_meatActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void waterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_waterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_waterActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void dairyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dairyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_dairyActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void householdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_householdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_householdActionPerformed
 
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void houseRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_houseRentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }//GEN-LAST:event_houseRentActionPerformed
+    int user_id;
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int houseM = Integer.parseInt(houseRent.getText());
+        int maintinM = Integer.parseInt(maintain.getText());
+        int dairyM = Integer.parseInt(dairy.getText());
+        int meatM = Integer.parseInt(meat.getText());
+        int snackM = Integer.parseInt(snacks.getText());
+        int houseHold = Integer.parseInt(household.getText());
+        int elecM = Integer.parseInt(electricity.getText());
+        int waterM = Integer.parseInt(water.getText());
+        int otherM = Integer.parseInt(others.getText());
+        MySqlConnection mysql = new MySqlConnection();
+        
+        int[] expenseAmounts = {houseM, maintinM, dairyM, meatM, snackM, houseHold, elecM, waterM, otherM}; // Array for dynamic selection
+        String sql = "INSERT INTO expense (user_id, category_id, amount, date) VALUES (?, ?, ?, ?)";
+        boolean success = true;
+        for (int i = 1; i <= 8; i++) { // Ensure i matches category_id from 1 to 8
+            
+             Connection conn = mysql.openConnection(); // same
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setInt(1, user_id);
+                pstmt.setInt(2, i); // category_id (1 = House Rent, 2 = Maintenance, etc.)
+                pstmt.setInt(3, expenseAmounts[i - 1]); // Get the corresponding amount from the array
+                pstmt.setString(4, month_add_expense.getText());
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("EX :" + ex);
+                success = false;
+            } finally {
+                
+                mysql.closeConnection(conn);
+            }
+        }
+        if(success){
+            
+        JOptionPane.showMessageDialog(rootPane, "Added");
+        }else{
+            
+        JOptionPane.showMessageDialog(rootPane, "Failure");
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -793,7 +861,12 @@ public class AddExpenses extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField dairy;
+    private javax.swing.JTextField electricity;
+    private javax.swing.JTextField houseRent;
+    private javax.swing.JTextField household;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -832,15 +905,11 @@ public class AddExpenses extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField maintain;
+    private javax.swing.JTextField meat;
     private javax.swing.JTextField month_add_expense;
+    private javax.swing.JTextField others;
+    private javax.swing.JTextField snacks;
+    private javax.swing.JTextField water;
     // End of variables declaration//GEN-END:variables
 }

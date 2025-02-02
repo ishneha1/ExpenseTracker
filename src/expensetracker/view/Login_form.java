@@ -5,6 +5,13 @@
 package expensetracker.view;
 
 import dao.UserTestDao;
+import database.MySqlConnection;
+import expensetracker.model.UserTestModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -318,12 +325,29 @@ public class Login_form extends javax.swing.JFrame {
         setVisible(false);
 
     }//GEN-LAST:event_backClicked
-
+        MySqlConnection mysql = new MySqlConnection();
     private void Loginbuttonclicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Loginbuttonclicked
         // TODO add your handling code here:
-    
-        new Dashboard().setVisible(true);
-        setVisible(false);
+        Connection conn = mysql.openConnection();
+        String sql = "SELECT * FROM users where email = ? and password = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username.getText());
+            pstmt.setString(2, password.getText());
+            ResultSet result = pstmt.executeQuery(); // read query
+            if(result.next()){
+                int userId = result.getInt("id");
+                
+                JOptionPane.showMessageDialog(rootPane, "Password Correct");
+                new Dashboard(userId).setVisible(true);
+                setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Password Incorrect");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            mysql.closeConnection(conn);
+        }
     }//GEN-LAST:event_Loginbuttonclicked
 
     /**

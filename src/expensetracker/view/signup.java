@@ -5,6 +5,11 @@
 package expensetracker.view;
 
 import dao.UserTestDao;
+import database.MySqlConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -402,11 +407,25 @@ public class signup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         
-        UserTestDao userDao = new UserTestDao();
-        userDao.signup(firstNameField.getText(), passwordField.getText(), emailField.getText());
+        MySqlConnection mysql = new MySqlConnection();
+        Connection conn = mysql.openConnection(); // same
         
+        String sql = "INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)"; // database ko query raw
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, firstNameField.getText());
+            pstmt.setString(2, lastNameField.getText());
+            pstmt.setString(3, emailField.getText());
+            pstmt.setString(4, passwordField.getText());
+            
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(rootPane, "Success");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Failure");
+            System.out.println("EX :" + ex);
+        } finally {
+            mysql.closeConnection(conn);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void firstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameFieldActionPerformed
