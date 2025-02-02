@@ -59,7 +59,6 @@ public class over_view2 extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 468));
         setMinimumSize(new java.awt.Dimension(600, 468));
         setResizable(false);
 
@@ -101,16 +100,44 @@ public class over_view2 extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(100, 173, 166));
 
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Dashboard");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DashboardClicked(evt);
+            }
+        });
 
+        jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Add Expense");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddExpenseClicked(evt);
+            }
+        });
 
+        jButton4.setBackground(new java.awt.Color(0, 0, 0));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("View Expense");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewExpenseClicked(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(245, 181, 198));
         jButton5.setText("Overview");
 
+        jButton6.setBackground(new java.awt.Color(0, 0, 0));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Delete");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteExpenseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -505,6 +532,33 @@ public class over_view2 extends javax.swing.JFrame {
         new demo().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_logoutclicked
+
+    private void DashboardClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DashboardClicked
+        // TODO add your handling code here:
+        new Dashboard().setVisible(true);
+        setVisible(false);
+
+    }//GEN-LAST:event_DashboardClicked
+
+    private void AddExpenseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddExpenseClicked
+        // TODO add your handling code here:
+        new AddExpenses().setVisible(true);
+        setVisible(false);
+
+    }//GEN-LAST:event_AddExpenseClicked
+
+    private void ViewExpenseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewExpenseClicked
+        // TODO add your handling code here:
+        new ViewExpenses().setVisible(true);
+        setVisible(false);
+
+    }//GEN-LAST:event_ViewExpenseClicked
+
+    private void DeleteExpenseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteExpenseClicked
+        // TODO add your handling code here:
+        new DeleteExpenses().setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_DeleteExpenseClicked
 
     /**
      * @param args the command line arguments
